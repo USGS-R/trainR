@@ -10,5 +10,5 @@ sep_censored <- function(vals){
 }
 
 which_censored <- function(vals){
-  grep("<|>", vals)
+  grep("<", vals)
 }
