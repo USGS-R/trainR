@@ -3,3 +3,8 @@
 export(calc_pct)
 export(pct_censored)
 export(pct_missing)
+export(rmse)
+export(rmse.by.year)
+importFrom(graphics,axis)
+importFrom(graphics,plot)
+importFrom(stats,median)
