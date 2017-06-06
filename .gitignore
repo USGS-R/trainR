@@ -3,4 +3,4 @@
 .RData
 .Ruserdata
 .Rbuildignore
-.Ds_Store
+.DS_Store
