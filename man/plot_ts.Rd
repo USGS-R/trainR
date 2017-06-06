@@ -4,18 +4,23 @@
 \alias{plot_ts}
 \title{Timeseries plotting function}
 \usage{
-plot_ts(xdat, ydat, y.axis.label = "Y Value")
+plot_ts(xdat, ydat, y.axis.label = "Y Value", color = "red")
 }
 \arguments{
-\item{xdat}{data for the x axis}
+\item{xdat}{dates for the x axis}
 
 \item{ydat}{data for the y axis}
 
 \item{y.axis.label}{name to put on the y axis, defaults to "Y Value"}
+
+\item{color}{chr, color of plotted symbol}
 }
 \value{
 plot of timeseries
 }
 \description{
 Plot a timeseries by giving the x and y data.
+}
+\examples{
+color <- ("blue")
 }
