@@ -16,4 +16,3 @@ calc_water_year <- function(date.vec){
   return(water.year)
 }
 
-#something something
