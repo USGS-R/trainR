@@ -22,5 +22,6 @@ plot of timeseries
 Plot a timeseries by giving the x and y data.
 }
 \examples{
-color <- ("blue")
+color <- "blue"
+plot_ts(as.Date("2010-08-15"),10,color=color)
 }
