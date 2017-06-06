@@ -7,7 +7,7 @@
 plot_ts(xdat, ydat, y.axis.label = "Y Value")
 }
 \arguments{
-\item{xdat}{data for the x axis}
+\item{xdat}{dates for the x axis}
 
 \item{ydat}{data for the y axis}
 
