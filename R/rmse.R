@@ -14,8 +14,8 @@
 rmse <- function(obs, pred){
   #calculate root-mean-squared-error
   sqr.error <- (obs - pred)^2
-  mse <- mean(sqr.error)
-  rmse <- sqrt(mse)
+  mn.sqr.error <- mean(sqr.error)
+  rmse <- sqrt(mn.sqr.error)
   return(rmse)
 }
 
