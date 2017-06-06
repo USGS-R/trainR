@@ -5,8 +5,11 @@
 #' and ends on September 30. For example, water year 2015 started on 2014-10-01 and ended on 2015-09-30. 
 #' See the USGS definition at https://water.usgs.gov/nwc/explain_data.html.
 #' @return Vector of the water year in which the given date occurs
+#' @importFrom graphics axis plot
+#' @importFrom stats median
 #' @examples 
 #' mydates <- seq(as.POSIXct("2010-01-01"), as.POSIXct("2011-01-01"), by="day")
+#' waterYear <- calc_water_year(date.vec = mydates)
 
 calc_water_year <- function(date.vec){
   # POSIXlt years start at 100, POSIXlt months start at 0
