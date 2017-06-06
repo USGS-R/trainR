@@ -21,7 +21,7 @@ calc_water_year <- function(date.vec){
   # when the date is NA, it should not try to add 1
   which.past.oct <- cal.mon >= 10
   
-  # ad one to the year if it is in October or after
+  # add one to the year if it is in October or after
   # October is end of water year
   water.year <- cal.year
   water.year[which.past.oct] <- cal.year[which.past.oct] + 1
