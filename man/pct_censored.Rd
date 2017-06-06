@@ -13,9 +13,7 @@ pct_censored(vals, digits = 2)
 Flags data censored.
 }
 \examples{
+
 data <- c(1,2,3,4,5,16,34)
 censored <- pct_censored(data)
-
-
-
 }

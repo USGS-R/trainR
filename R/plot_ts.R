@@ -7,7 +7,7 @@
 #' @param y.axis.label name to put on the y axis, defaults to "Y Value"
 #' @param color chr, color of plotted symbol
 #' @return plot of timeseries
-#' @importFrom("graphics", "axis", "plot")
+#' @importFrom graphics axis plot
 #' @examples 
 #' color <- "blue"
 #' plot_ts(as.Date("2010-08-15"),10,color=color)

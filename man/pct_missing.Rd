@@ -13,7 +13,7 @@ pct_missing(vals, digits = 2)
 Flags missing data
 }
 \examples{
+
 data <- c(1,2,3,4,5,NA)
 missing <- pct_missing(data)
- 
 }

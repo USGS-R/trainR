@@ -12,6 +12,7 @@ calc_pct(ninterest, ntotal, digits = 2)
 \item{ntotal}{vector total amount of data}
 }
 \examples{
+
 data <- c(1,2,3,4,5)
 data2 <- c(2,3,4,5,6)
 percent <- calc_pct(data,data2)
