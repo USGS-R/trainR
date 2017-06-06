@@ -5,13 +5,15 @@
 #' @param xdat dates for the x axis
 #' @param ydat data for the y axis
 #' @param y.axis.label name to put on the y axis, defaults to "Y Value"
-#' 
+#' @param color chr, color of plotted symbol
 #' @return plot of timeseries
-#' 
-plot_ts <- function(xdat, ydat, y.axis.label="Y Value"){
+#' @examples 
+#' color <- ("blue")
+
+plot_ts <- function(xdat, ydat, y.axis.label="Y Value", color="red"){
   
   plot(xdat, ydat, xlab = "Date", ylab = y.axis.label, pch=20, 
-       col="red", las=1, tck=0.02, axes=FALSE, frame.plot = TRUE)
+       col=color, las=1, tck=0.02, axes=FALSE, frame.plot = TRUE)
   
   
   # If dates span > 1 year, change axis label format
