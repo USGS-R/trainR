@@ -2,3 +2,10 @@
 
 importFrom("(\"graphics\",","\"axis\",")
 importFrom("(\"graphics\",","\"plot\")")
+
+importFrom(graphics,axis)
+importFrom(graphics,plot)
+importFrom(stats,median)
+
+export(rmse)
+export(rmse.by.year)
