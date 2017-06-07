@@ -20,6 +20,3 @@ test_that("is pct_censored return all data good TRUE",{
 test_that("is pct_missing return bad input TRUE",{
   expect_warning(pct_missing(NULL)) 
 })
-#test_that("invalid pH returns FALSE",{
-#  expect_false(is_valid_pH(22))
-#})
