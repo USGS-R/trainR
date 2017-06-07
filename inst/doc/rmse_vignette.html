@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Scott C. Worland" />
+
+<meta name="date" content="2017-06-06" />
+
+<title>How to use the rmse function in the trainR package</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">How to use the rmse function in the trainR package</h1>
+<h4 class="author"><em>Scott C. Worland</em></h4>
+<h4 class="date"><em>2017-06-06</em></h4>
+
+
+
+<p>There are two root mean squared error functions. One simply calculates the rmse for given predicted and observed values:</p>
+<p><span class="math display">\[
+rmse = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(y-\hat{y})^2}
+\]</span></p>
+<p>Here is a working example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(ggplot2)
+<span class="kw">require</span>(trainR)
+
+<span class="co"># create observed</span>
+obs &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">50</span>
+
+<span class="co"># create error and predicted</span>
+e &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">50</span>,<span class="dt">mean=</span><span class="dv">0</span>,<span class="dt">sd=</span><span class="dv">5</span>)
+pred &lt;-<span class="st"> </span>obs +<span class="st"> </span>e
+
+<span class="co"># run function</span>
+<span class="kw">rmse</span>(obs,pred)</code></pre></div>
+<pre><code>## [1] 4.803247</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot</span>
+<span class="kw">qplot</span>(obs,pred)</code></pre></div>
+<p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
+<p>There is another function that calculates the RMSE by year. Here is a working example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate year and observed</span>
+year &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">25</span>),<span class="kw">rep</span>(<span class="dv">2</span>,<span class="dv">25</span>),<span class="kw">rep</span>(<span class="dv">3</span>,<span class="dv">25</span>))
+obs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">75</span>)
+
+<span class="co"># generate errors that change by year</span>
+e &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">25</span>,<span class="dt">mean=</span><span class="dv">0</span>,<span class="dt">sd=</span><span class="dv">2</span>),<span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">25</span>,<span class="dt">mean=</span><span class="dv">0</span>,<span class="dt">sd=</span><span class="dv">10</span>),<span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">25</span>,<span class="dt">mean=</span><span class="dv">0</span>,<span class="dt">sd=</span><span class="dv">50</span>))
+pred &lt;-<span class="st"> </span>obs +<span class="st"> </span>e
+
+<span class="co"># create data frame</span>
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(year,obs,pred)
+
+<span class="co"># run function</span>
+<span class="kw">rmse.by.year</span>(df)</code></pre></div>
+<pre><code>##         1         2         3 
+##  1.655911 11.196261 50.619192</code></pre>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

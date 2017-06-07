@@ -3,4 +3,7 @@
 .RData
 .Ruserdata
 .Rbuildignore
-.DS_store
+.DS_Store
+vignettes/*.R
+vignettes/*.html
+
