@@ -7,6 +7,7 @@
 #' @return Vector of the water year in which the given date occurs
 #' @importFrom graphics axis plot
 #' @importFrom stats median
+#' @export
 #' @examples 
 #' mydates <- seq(as.POSIXct("2010-01-01"), as.POSIXct("2011-01-01"), by="day")
 #' waterYear <- calc_water_year(date.vec = mydates)
@@ -19,7 +20,7 @@ calc_water_year <- function(date.vec){
   
   # address NA dates and made a new comment
   # when the date is NA, it should not try to add 1
-  which.past.oct <- cal.mon >= 10
+  which.past.oct <- cal.mon >= 10 & !is.na(cal.mon)
   
   # add one to the year if it is in October or after
   # October is end of water year
