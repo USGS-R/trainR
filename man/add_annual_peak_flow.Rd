@@ -20,9 +20,9 @@ Calculate annual peak flow
 site_id <- '05114000'
 parameterCd <- '00060'
 startDate <- "2014-10-01"
-endDate <- "2014-09-30"
+endDate <- "2015-09-30"
 flow.ts <- readNWISuv(site_id, parameterCd, startDate, endDate)
-peak_flow <- flow.ts()
+peak_flow <- add_annual_median_flow(flow.ts)
 }
 
 }
