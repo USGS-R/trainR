@@ -43,6 +43,9 @@ pct_missing <- function(vals, digits=2){
 #' 
 #' @export
 calc_pct <- function(ninterest, ntotal, digits=2){
+  if (!is.vector(ninterest,mode="numeric") && length(ninterest) == 1 ) {stop("ninterest must be numeric vectors of length one")}
+  if (!is.vector(ntotal,mode="numeric") && length(ntotal) == 1 ) {stop("ntotal must be numeric vectors of length one")}
+  if (!is.vector(digits,mode="numeric") && length(digits) == 1 ) {stop("digits must be numeric vectors of length one")}
   pct <- ninterest/ntotal*100
   pct.rnd <- round(pct,digits=digits)
   return(pct.rnd)
