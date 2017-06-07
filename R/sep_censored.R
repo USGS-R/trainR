@@ -1,3 +1,4 @@
+#' @export
 sep_censored <- function(vals){
   cen.i <- which_censored(vals)
   just.values <- as.numeric(gsub("<|>", "", vals))
@@ -10,5 +11,5 @@ sep_censored <- function(vals){
 }
 
 which_censored <- function(vals){
-  grep("<", vals)
+  grep("<|>", vals)
 }
