@@ -1,5 +1,8 @@
 #' @export
 sep_censored <- function(vals){
+  if(!is.vector(vals)) {
+    stop("vals need to be a vector instead of a dataframe")
+  }
   cen.i <- which_censored(vals)
   just.values <- as.numeric(gsub("<|>", "", vals))
   
