@@ -18,7 +18,7 @@ $$
 Here is a working example:
 
 ```{r, fig.align='center'}
-require(ggplot2)
+library(ggplot2)
 require(trainR)
 
 # create observed
