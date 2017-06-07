@@ -13,7 +13,7 @@
 #' waterYear <- calc_water_year(date.vec = mydates)
 
 calc_water_year <- function(date.vec){
-  if(!is.vector(date.vec)) {
+  if(length(date.vec)==1) {
     stop("date.vec must be a vector for this cool computation to continue")
   }
   # POSIXlt years start at 100, POSIXlt months start at 0
