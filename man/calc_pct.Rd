@@ -13,6 +13,9 @@ calc_pct(ninterest, ntotal, digits = 2)
 
 \item{digits}{integer number of digits}
 }
+\description{
+Percent of missing or bad data
+}
 \examples{
 
 data <- c(1,2,3,4,5)

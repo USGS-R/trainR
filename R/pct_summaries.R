@@ -35,6 +35,7 @@ pct_missing <- function(vals, digits=2){
   return(na.pct)
 }
 #' @title Percent of missing or bad data
+#' @description Percent of missing or bad data
 #' @param ninterest vector amount of bad data
 #' @param ntotal  vector total amount of data
 #' @param digits integer number of digits

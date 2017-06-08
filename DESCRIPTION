@@ -1,6 +1,6 @@
 Package: trainR
 Type: Package
-Title: Example package for learning how to develop R packages.
+Title: learning how to develop R packages
 Version: 0.1
 Date: 2017-05-25
 Authors@R: c( 
