@@ -8,6 +8,8 @@ pct_missing(vals, digits = 2)
 }
 \arguments{
 \item{vals}{vector amount of missing data}
+
+\item{digits}{integer number of digits to print}
 }
 \description{
 Flags missing data

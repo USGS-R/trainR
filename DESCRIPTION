@@ -16,7 +16,8 @@ Imports:
     dplyr
 Suggests: testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggplot2
 LazyData: true
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

@@ -1,6 +1,7 @@
 #' @title Censored Data
 #' @description Flags data censored.
 #' @param  vals vector amount of bad censored
+#' @param digits integer number of digits to print
 #' @examples
 #' 
 #' data <- c(1,2,3,4,5,16,34)
@@ -19,6 +20,7 @@ pct_censored <- function(vals, digits=2){
 #' @title Missing Data
 #' @description  Flags missing data
 #' @param vals  vector amount of missing data
+#' @param digits integer number of digits to print
 #' @examples
 #' 
 #' data <- c(1,2,3,4,5,NA)
@@ -35,6 +37,7 @@ pct_missing <- function(vals, digits=2){
 #' @title Percent of missing or bad data
 #' @param ninterest vector amount of bad data
 #' @param ntotal  vector total amount of data
+#' @param digits integer number of digits
 #' @examples 
 #' 
 #' data <- c(1,2,3,4,5)
