@@ -11,8 +11,11 @@
 #' @examples 
 #' color <- "blue"
 #' plot_ts(as.Date("2010-08-15"),10,color=color)
-
+#' @export
 plot_ts <- function(xdat, ydat, y.axis.label="Y Value", color="red"){
+  if(class(xdat)!="Date") { 
+    stop("xdat must be a Date") 
+  }
   
   plot(xdat, ydat, xlab = "Date", ylab = y.axis.label, pch=20, 
        col=color, las=1, tck=0.02, axes=FALSE, frame.plot = TRUE)

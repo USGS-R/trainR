@@ -14,10 +14,11 @@
 rmse <- function(obs, pred){
   #calculate root-mean-squared-error
   sqr.error <- (obs - pred)^2
-  mn.sqr.error <- mean(sqr.error)
+  mn.sqr.error <- mean(sqr.error,na.rm=TRUE)
   rmse <- sqrt(mn.sqr.error)
   return(rmse)
 }
+
 
 #' @title Root mean squared error (rmse) by year
 #' @description calculates the rmse between predicted and observed values for each year in a dataset.
