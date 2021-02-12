@@ -10,6 +10,11 @@ calc_pct(ninterest, ntotal, digits = 2)
 \item{ninterest}{vector amount of bad data}
 
 \item{ntotal}{vector total amount of data}
+
+\item{digits}{integer number of digits}
+}
+\description{
+Percent of missing or bad data
 }
 \examples{
 

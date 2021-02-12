@@ -21,6 +21,8 @@
 #' }
 #' 
 add_annual_peak_flow <- function(flow.ts){
+  
+  year <- flow <- ".dplyr"
   if(!is.data.frame(flow.ts) || any(names(flow.ts) != c('flow', 'year'))) {
     stop("flow.ts must be a data.frame with columns 'flow' and 'year'")
   }
@@ -40,9 +42,9 @@ add_annual_peak_flow <- function(flow.ts){
 #' 
 #' @return flow.ts.med numeric USGS annual median flow
 #' 
-#' @examples 
-#' 
 add_annual_median_flow <- function(flow.ts){
+  
+  year <- flow <- ".dplyr"
   if(!is.data.frame(flow.ts) || any(names(flow.ts) != c('flow', 'year'))) {
     stop("flow.ts must be a data.frame with columns 'flow' and 'year'")
   }
@@ -50,6 +52,7 @@ add_annual_median_flow <- function(flow.ts){
   flow.ts.med <- dplyr::mutate(flow.ts.grpd, flow.med = median(flow))
   return(flow.ts.med)
 }
+
 #' @title add_annual_low_flow
 #' 
 #' @description Calculate annual low flow
@@ -62,9 +65,9 @@ add_annual_median_flow <- function(flow.ts){
 #' 
 #' @return flow.ts.low numeric USGS annual low flow
 #' 
-#' @examples 
-#' 
 add_annual_low_flow <- function(flow.ts){
+  
+  year <- flow <- ".dplyr"
   if(!is.data.frame(flow.ts) || any(names(flow.ts) != c('flow', 'year'))) {
     stop("flow.ts must be a data.frame with columns 'flow' and 'year'")
   }

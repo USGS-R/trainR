@@ -15,6 +15,3 @@ flow.ts.med numeric USGS annual median flow
 \description{
 Calculate annual median flow
 }
-\examples{
-
-}

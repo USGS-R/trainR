@@ -8,6 +8,8 @@ pct_censored(vals, digits = 2)
 }
 \arguments{
 \item{vals}{vector amount of bad censored}
+
+\item{digits}{integer number of digits to print}
 }
 \description{
 Flags data censored.

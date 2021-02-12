@@ -15,6 +15,3 @@ flow.ts.low numeric USGS annual low flow
 \description{
 Calculate annual low flow
 }
-\examples{
-
-}

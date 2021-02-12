@@ -1,3 +1,9 @@
+#' sep_censored
+#' 
+#' sep_censored function
+#' 
+#' @param vals char or numeric vector
+#' 
 #' @export
 sep_censored <- function(vals){
   if(!is.vector(vals)) {
